@@ -19,7 +19,7 @@ int main()
 
     cout << "Number of words: " << String1.CountWords() << endl;
 
-    cout << "Number of words: " << String1.CountWords("Fadi ahmed rateb omer") << endl;
+    cout << "Number of words: " << String1.CountWords("Ali ahmed Mohamed Aya") << endl;
 
     cout << "Number of words: " <<
         clsString::CountWords("Mohammed Saqer Abu-Hadhoud") << endl;
@@ -67,12 +67,12 @@ int main()
     //----------------
 
     cout << "Capital Letters count : "
-        << clsString::CountLetters("Mohammed Abu-Hadhoud", clsString::CapitalLetters)
+        << clsString::CountLetters("Hassan Ali Mohamed", clsString::CapitalLetters)
         << endl << endl;
 
     //----------------
 
-    String3.Value = "Welcome to Jordan";
+    String3.Value = "Welcome to Egypt";
     cout << String3.Value << endl;
 
     cout << "Capital Letters count :" << String3.CountCapitalLetters() << endl;
@@ -116,42 +116,42 @@ int main()
     //----------------
 
     //Tirms
-    String3.Value = "    Mohammed Abu-Hahdoud     ";
+    String3.Value = "    Hassan Ali Mohamed     ";
     cout << "\nString     = " << String3.Value;
 
-    String3.Value = "    Mohammed Abu-Hahdoud     ";
+    String3.Value = "    Hassan Ali Mohamed     ";
     String3.TrimLeft();
     cout << "\n\nTrim Left  = " << String3.Value;
 
     //----------------
 
-    String3.Value = "    Mohammed Abu-Hahdoud     ";
+    String3.Value = "    Hassan Ali Mohamed     ";
     String3.TrimRight();
     cout << "\nTrim Right = " << String3.Value;
 
     //----------------
 
-    String3.Value = "    Mohammed Abu-Hahdoud     ";
+    String3.Value = "    Hassan Ali Mohamed     ";
     String3.Trim();
     cout << "\nTrim       = " << String3.Value;
 
     //----------------
 
     //Joins
-    vector<string> vString1 = { "Mohammed","Faid","Ali","Maher" };
+    vector<string> vString1 = { "Mohammed","Aya","Ali","Fatama" };
 
     cout << "\n\nJoin String From Vector: \n";
     cout << clsString::JoinString(vString1, " ");
 
 
-    string arrString[] = { "Mohammed","Faid","Ali","Maher" };
+    string arrString[] = { "Mohammed","Faid","Ali","Aya" };
 
     cout << "\n\nJoin String From array: \n";
     cout << clsString::JoinString(arrString, 4, " ");
 
     //----------------
 
-    String3.Value = "Mohammed Saqer Abu-Hahdoud";
+    String3.Value = "Hassan Ali Mohamed";
     cout << "\n\nString     = " << String3.Value;
 
     String3.ReverseWordsInString();
