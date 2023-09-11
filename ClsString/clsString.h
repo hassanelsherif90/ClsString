@@ -1,5 +1,4 @@
 #pragma once
-
 #include <iostream>
 #include <vector>
 #include <string>
@@ -11,9 +10,9 @@ class clsString
 private:
 	string _Value;
 	string _delim;
-
-	
-
+	string _ReplaceToString;
+	string _ReplaceTo;
+	string _JoinString;
 
 public:
 
@@ -50,6 +49,7 @@ public:
 	}
 
 	__declspec(property(get = GetDelim, put = SetDelim)) string Delim;
+	
 
 	static vector <string> SplitString(string S1, string delim)
 	{
@@ -81,7 +81,157 @@ public:
 		return SplitString(_Value, _delim);
 	}
 
+	static string ReversedString(string S1, string Delim)
+	{
+		string S2 = "";
+		vector <string> vString;
+
+		vString = SplitString(S1, Delim);
+
+		vector <string>::iterator iter = vString.end();
+
+		while (iter != vString.begin())
+		{
+			--iter;
+			S2 += *iter + " ";
+		}
+
+		S2 = S2.substr(0, S2.length() - 1);
+		return S2;
+	}
+
+	string ReversedString()
+	{
+		return ReversedString(_Value, _delim);
+	}
+
+	void SetReplaceToString(string ReplaceToString)
+	{
+		_ReplaceToString = ReplaceToString;
+	}
+
+	string GetReplaceToString()
+	{
+		return _ReplaceToString;
+	}
+
+	__declspec(property(get = GetReplaceToString, put = SetReplaceToString)) string stReplaceToString;
 	
+	void SetReplaceTo(string ReplaceTo)
+	{
+		_ReplaceTo = ReplaceTo;
+	}
+
+	string GetReplaceTo()
+	{
+		return _ReplaceTo;
+	}
+
+	__declspec(property(get = GetReplaceTo, put = SetReplaceTo)) string stReplaceTo;
+
+	static string ReplaceWordsBuiltinFunctions(string S1, string ReplaceToString, string ReplaceTo)
+	{
+		short pos = S1.find(ReplaceToString);
+
+		while (pos != std::string::npos)
+		{
+			S1 = S1.replace(pos, ReplaceToString.length(), ReplaceTo);
+
+			pos = S1.find(ReplaceToString);
+		}
+		return S1;
+	}
+
+	string ReplaceWordsBuiltinFunctions()
+	{
+		return ReplaceWordsBuiltinFunctions(_Value, _ReplaceToString, _ReplaceTo);
+	}
+
+	static string AllLowerString(string S1)
+	{
+		for (short i = 0; i < S1.length(); i++)
+		{
+			S1[i] = tolower(S1[i]);
+		}
+		return S1;
+	}
+
+	string AllLowerString()
+	{
+		return AllLowerString(_Value);
+	}
+
+	static string AllUpperString(string S1)
+	{
+		for (short i = 0; i < S1.length(); i++)
+		{
+			S1[i] = toupper(S1[i]);
+		}
+		return S1;
+	}
+
+	string AllUpperString()
+	{
+		return AllUpperString(_Value);
+	}
+
+	void SetJoinString(string JoinString)
+	{
+		_JoinString = JoinString;
+	}
+	
+	string GetJoinString()
+	{
+		return _JoinString;
+	}
+
+	__declspec(property(get = GetJoinString, put = SetJoinString)) string Join_String;
+
+	static string JoinString(vector <string > vString, string Delim)
+	{
+		string S1;
+		for (string& S : vString)
+		{
+			S1 = S1 + S + Delim;
+		}
+		S1 = S1.substr(0, S1.length() - Delim.length());
+		return S1;
+	}
+
+	string JoinString()
+	{
+		return JoinString (SplitString(), _delim);
+	}
+
+
+	static string RepAllWordsString(string S1, string ReplaceToString, string ReplaceTo, vector < string > vString,string Delim, bool Match = true)
+	{
+		for (string& S : vString)
+		{
+			if (Match)
+			{
+				if (S == ReplaceToString)
+				{
+					S = ReplaceTo;
+				}
+			}
+			else
+			{
+				if (AllLowerString(S) == AllLowerString(ReplaceToString))
+				{
+					S = ReplaceTo;
+				}
+			}
+
+		}
+
+		return JoinString(vString, Delim);
+	}
+
+	string RepAllWordsString( )
+	{
+		return RepAllWordsString(_Value, _ReplaceToString, _ReplaceTo, SplitString(), _delim);
+	}
 
 };
 
