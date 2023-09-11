@@ -1,6 +1,4 @@
 
-//ProgrammingAdvices.com
-//Mohammed Abu-Hadhoud
 #include <iostream>
 #include "clsString.h"
 
@@ -35,7 +33,7 @@ int main()
 
     String3.UpperFirstLetterOfEachWord();
     cout << String3.Value << endl;
-    return 0;
+
     //----------------
 
     String3.LowerFirstLetterOfEachWord();
